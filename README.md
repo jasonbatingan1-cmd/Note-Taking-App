@@ -20,21 +20,13 @@ JBNotes is a full‑stack web application that allows users to register, log in,
 ## 📦 Installation & Setup
 1. Clone the repository
 ```bash 
-git clone https://github.com/yourusername/notekeeper.git
-cd notekeeper
+git clone https://github.com/jasonbatingan1-cmd/Note-Taking-App.git
 ```
 2. Install dependencies
 ```
 npm install
 ```
-3. Environment variables
-Create a .env file with:
-```
-MONGO_URI=mongodb://localhost:27017/notekeeper
-SESSION_SECRET=yourSecretHere
-PORT=3000
-```
-4. Start the server
+3. Start the server
 ```
 npm start
 ```
@@ -62,6 +54,8 @@ DELETE |    /notes/:id |    Delete a note
 ## 📁 Project Structure
 ```
 Note-Taking-App
+├── config/
+│   ├── Passport.js
 ├── models/
 │   ├── User.js
 │   └── Note.js
@@ -69,18 +63,20 @@ Note-Taking-App
 │   ├── authRouter.js
 │   └── notesRouter.js
 ├── views/
-│   ├── auth.ejs
-│   ├── form.ejs
-│   ├── notes.ejs
+│   └── notes/
+|   |   |── form.ejs
+|   |   └── notes.ejs 
 │   └── partials/
-|       |── header.ejs
-|       └── footer.ejs 
+|   |   |── header.ejs
+|   |   └── footer.ejs 
+├   ├── auth.ejs
+│   └── register.ejs
 ├── index.js
 └── package.json
 ```
 ## 🔐 Authentication Flow
-- Passwords hashed using bcrypt
-- Sessions stored in memory or MongoStore
+- Passwords hashed using pbkdf2
+- Sessions stored in memory
 - Middleware protects all /notes/* routes
 - Flash/toast messages provide user feedback
 <br><br><br>*JBNotes by Jason Batingan, 2026*
