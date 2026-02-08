@@ -1,0 +1,27 @@
+<%- include('../partials/header') %>
+
+    <div class="container mt-4" style="max-width: 600px;">
+        <h2>
+            <%= note ? "Edit Note" : "New Note" %> //if note exists, show "Edit Note", otherwise show "New Note"
+        </h2>
+
+        <form action="<%= note ? `/notes/${note._id}?_method=PUT` : '/notes' %>" method="POST">
+            <!-- if note exists, set form action to /notes/:id with PUT method, otherwise set to /notes with POST method -->
+            <div class="mb-3">
+                <label class="form-label">Title</label>
+                <input type="text" name="title" class="form-control" value="<%= note ? note.title : '' %>" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Content</label>
+                <textarea name="content" class="form-control" rows="5"
+                    required><%= note ? note.content : '' %></textarea>
+            </div>
+
+            <button class="btn btn-primary">
+                <%= note ? "Update" : "Create" %>
+            </button>
+        </form>
+    </div>
+
+    <%- include('../partials/footer') %>

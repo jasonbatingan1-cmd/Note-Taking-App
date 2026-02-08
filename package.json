@@ -1,0 +1,38 @@
+{
+  "name": "note-taking-app",
+  "version": "1.0.0",
+  "description": "Git repository for Circuit Stream 2025 Bootcamp Midterm - a note taking app where users can create an account/login to create/read/update/delete notes.",
+  "homepage": "https://github.com/jasonbatingan1-cmd/Note-Taking-App#readme",
+  "bugs": {
+    "url": "https://github.com/jasonbatingan1-cmd/Note-Taking-App/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasonbatingan1-cmd/Note-Taking-App.git"
+  },
+  "license": "ISC",
+  "author": "Jason Batingan",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "chai": "^6.2.2",
+    "crypto": "^1.0.1",
+    "ejs": "^4.0.1",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "method-override": "^3.0.0",
+    "mocha": "^11.7.5",
+    "mongoose": "^9.1.5",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
