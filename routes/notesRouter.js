@@ -32,6 +32,7 @@ router.post('/', isAuthenticated, async (req, res) => {
         const { title, content } = req.body;
         const note = new Note({ title, content, user: req.user._id });
         await note.save();
+        req.session.toast = "Note created successfully.";
         res.redirect('/notes');
     } catch (err) {
         console.error(err);
@@ -47,6 +48,7 @@ router.put('/:id', isAuthenticated, async (req, res) => {
             { _id: req.params.id, user: req.user._id },
             { title, content }
         );
+        req.session.toast = "Note updated successfully.";
         res.redirect('/notes');
     } catch (err) {
         console.error(err);
@@ -58,6 +60,7 @@ router.put('/:id', isAuthenticated, async (req, res) => {
 router.delete('/:id', isAuthenticated, async (req, res) => {
     try {
         await Note.findOneAndDelete({ _id: req.params.id, user: req.user._id });
+        req.session.toast = "Note deleted successfully.";
         res.redirect('/notes');
     } catch (err) {
         console.error(err);

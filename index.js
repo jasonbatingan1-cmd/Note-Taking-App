@@ -40,6 +40,12 @@ app.use((req, res, next) => {
     next();
 });
 
+// set up Toast notifications middleware (using session to store messages)
+app.use((req, res, next) => {
+    res.locals.toast = req.session.toast;
+    delete req.session.toast;
+    next();
+});
 
 // Middleware for method override to support PUT and DELETE from forms
 import methodOverride from 'method-override';

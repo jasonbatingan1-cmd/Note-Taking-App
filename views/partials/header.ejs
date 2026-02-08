@@ -29,17 +29,12 @@
 
         <h1 class="m-4 text-uppercase">📝JBNotes</h1>
 
-        <!-- Toast Notification Container -->
-        <div class="toast-container position-fixed top-0 end-0 m-3">
-            <div class="toast" id="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header justify-content-end">
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body">
-                    <% if (locals.message) { %>
-                        <%= locals.message %>
-                            <% } %>
+        <h3 class="mb-4">Hello, <%= user ? user.username : 'Guest' %>!</h3>
 
-                </div>
+        <!-- Toast Notification Container -->
+        <% if (toast) { %>
+            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                <%= toast %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
-        </div>
+            <% } %>

@@ -45,6 +45,8 @@ router.post('/register', async (req, res) => {
             // Auto-login after registration
             req.login(user, (err) => {
                 if (err) return res.redirect('/login');
+
+                req.session.toast = "Registration successful. Welcome!";
                 return res.redirect('/notes');
             });
         });
@@ -58,18 +60,32 @@ router.post('/register', async (req, res) => {
     }
 });
 
+// handle login POST request using Passport's local strategy
+router.post('/login', (req, res, next) => {
+    passport.authenticate('local', (err, user, info) => {
+        if (err) return next(err);
 
-//handle login post request
-router.post('/login', passport.authenticate('local', {
-    successRedirect: '/notes',
-    failureRedirect: '/'
-}));
+        if (!user) {
+            req.session.toast = "Invalid email or password";
+            return res.redirect('/');
+        }
+
+        req.login(user, (err) => {
+            if (err) return next(err);
+
+            req.session.toast = "Welcome back!";
+            return res.redirect('/notes');
+        });
+    })(req, res, next);
+});
+
 
 //add logout route
 router.post('/logout', function (req, res, next) {
     req.logout(function (err) {
         if (err) { return next(err); }
-        res.redirect('/');
+        req.session.toast = "Logged out successfully.";
+        res.redirect('/'); 
     });
 });
 
