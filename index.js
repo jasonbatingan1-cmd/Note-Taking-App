@@ -34,6 +34,13 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Make user available in all EJS views. This allows us to conditionally show login/logout links, etc.
+app.use((req, res, next) => {
+    res.locals.user = req.user; // makes user available in all EJS views
+    next();
+});
+
+
 // Middleware for method override to support PUT and DELETE from forms
 import methodOverride from 'method-override';
 app.use(methodOverride('_method'));

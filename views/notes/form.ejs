@@ -2,7 +2,7 @@
 
     <div class="container mt-4" style="max-width: 600px;">
         <h2>
-            <%= note ? "Edit Note" : "New Note" %> //if note exists, show "Edit Note", otherwise show "New Note"
+            <%= note ? "Edit Note" : "New Note" %> <!-- if note exists, show "Edit Note", otherwise show "New Note" -->
         </h2>
 
         <form action="<%= note ? `/notes/${note._id}?_method=PUT` : '/notes' %>" method="POST">

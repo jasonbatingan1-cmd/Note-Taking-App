@@ -5,14 +5,15 @@
 
         <a href="/notes/new" class="btn btn-primary mb-3">New Note</a>
 
-        <% if (notes.length===0) { %> //check if there are no notes to display
+        <% if (notes.length===0) { %> <!-- if there are no notes, show message -->
             <p>No notes yet.</p>
             <% } else { %>
                 <ul class="list-group">
                     <% notes.forEach(note=> { %>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <span>
-                                <%= note.title %>
+                                <%= note.title %> -
+                                <%= note.content %>
                             </span>
 
                             <div>
