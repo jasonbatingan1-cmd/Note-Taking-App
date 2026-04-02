@@ -4,6 +4,10 @@ import ejs from 'ejs';
 import mongoose from 'mongoose';
 import passport from 'passport';
 import session from 'express-session';
+import dotenv from 'dotenv';
+
+// Load environment variables from .env file
+dotenv.config();
 
 //Import routes
 import authRouter from './routes/authRouter.js';
@@ -52,7 +56,7 @@ import methodOverride from 'method-override';
 app.use(methodOverride('_method'));
 
 //Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/NoteTakingApp')
+mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
         console.log('Connected to MongoDB');
     }).catch(err => {
