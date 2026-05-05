@@ -17,7 +17,8 @@ import notesRouter from './routes/notesRouter.js';
 const app = express();
 
 //Define the port
-const PORT = 3000;
+const PORT = 
+process.env.PORT || 3000;
 
 
 // Set EJS as the templating engine
